@@ -1,5 +1,4 @@
 import React from "react"
-import { scryRenderedComponentsWithType } from "react-dom/test-utils"
 import styled from "styled-components"
 import SCT from "../img/SCT.png"
 

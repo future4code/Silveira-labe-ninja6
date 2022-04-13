@@ -72,7 +72,7 @@ export default class App extends React.Component {
         return <CreatePage />
       case "cart":
         return <Cart changePage={this.changePage} cart={this.state.cart} removerCart={this.removerCart} LimparCart={this.LimparCart}/>
-      case "detail":
+      case "detalhe":
         return <DetailPage jobId={this.state.DetailId} changePage={this.changePage}/>
       default:
         return <Home changePage={this.changePage} />

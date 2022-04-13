@@ -20,7 +20,7 @@ const CartCard = (props) => {
         <Card>
             <h3>{props.title}</h3>
             <p>R${props.price.toFixed(2)}</p>
-            <button onClick={() => props.removeCart(props.id)}>Remover</button>
+            <button onClick={() => props.removerCart(props.id)}>Remover</button>
         </Card>
     )
 }
