@@ -1,5 +1,6 @@
 import React from "react";
 import { createJob } from "../../services/requests";
+import { CreateContainer, Button_enviar } from "./Styled.js";
 
 class CreateJob extends React.Component {
     state = {
@@ -7,7 +8,7 @@ class CreateJob extends React.Component {
             title:"",
             description:"",
             price:0,
-            paymentMethods:"",
+            paymentMethods:[],
             dueDate:""
         }
     };
@@ -17,12 +18,14 @@ class CreateJob extends React.Component {
     onChangeTittle = (e) => this.setState({body: {...this.state.body, title: e.target.value}});
     onChangeDescription = (e) => this.setState({body: {...this.state.body ,description: e.target.value}});
     onChangePrice = (e) => this.setState({body: {...this.state.body, price: e.target.value}});
-    onChangePaymentMethods = (e) => this.setState({body: {...this.state.body, paymentMethods: [...this.state.body.paymentMethods, e.target.value]}});
+    onChangePaymentMethods = (e) => this.setState({body: {...this.state.body, paymentMethods: Array.from(e.target.selectedOptions, option => option.value)}});
+    
     onChangeDueDate = (e) => this.setState({body: {...this.state.body, dueDate: e.target.value}});
 
     render() {
+        console.log(this.state.body)
         return (
-            <div>
+            <CreateContainer>
                 <h1>Cadastre o seu Serviço!</h1>
                 <input value={this.state.body.title} onChange={this.onChangeTittle} placeholder="Título"/>
                 <input value={this.state.body.description} onChange={this.onChangeDescription} placeholder="Descrição"/>
@@ -35,10 +38,10 @@ class CreateJob extends React.Component {
                     <option value={"pix"}>Pix</option>
                 </select>
                 <input value={this.state.body.dueDate} onChange={this.onChangeDueDate} type="date" placeholder="Prazo do Serviço"/>
-                <button onClick={() => createJob(this.state.body, this.resetInput)}>Cadastrar Serviço</button><br/>
+                <Button_enviar onClick={() => createJob(this.state.body, this.resetInput)}>Cadastrar Serviço</Button_enviar><br/>
                 <hr/>
                 <button onClick={this.props.goToHome}>Home</button>
-            </div>
+            </CreateContainer>
         )
     }
 }
