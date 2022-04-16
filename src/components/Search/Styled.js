@@ -16,6 +16,14 @@ export const MainSearch = styled.div `
         object-fit: contain;
     }
 
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: 100%;
+    }
+
     .div-search {
         display: flex;
         width: 70%;
@@ -95,6 +103,26 @@ export const MainSearch = styled.div `
                 width: 90%;
                 height: 90%;
             }
+        }
+    }
+
+    .div-cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+
+        hr {
+            /* border: none; */
+            width: 70%;
+            height: 1px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 70%;
         }
     }
 `

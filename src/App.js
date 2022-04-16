@@ -29,7 +29,7 @@ const Global = createGlobalStyle`
 
 class App extends React.Component {
 	state = {
-		currentPage: "cart",
+		currentPage: "",
 		DetailId: "", 
     	cart: [],
 		pesquisa: [] 
@@ -48,21 +48,19 @@ class App extends React.Component {
 	}
 
 	addCart = (job) => {
-	const novoCart = [...this.state.cart, job]
-	this.setState({cart: novoCart})
-	localStorage.setItem("Cart", JSON.stringify(novoCart))
-	alert(`Serviço ${job.title} adicionado ao carrinho`)
+		const novoCart = [...this.state.cart, job]
+		this.setState({cart: novoCart})
+		alert(`Serviço ${job.title} adicionado ao carrinho`)
 	}
 	
 	removerCart = (id) => {
-	const toDelete = window.confirm("Concorda em remover o serviço do carrinho??")
-	if (toDelete){
-		const novoCart = this.state.cart.filter((cartItem) => {
-		return cartItem.id !== id
-		})
-		this.setState({cart: novoCart})
-		localStorage.setItem("Cart", JSON.stringify(novoCart))
-	}
+		const toDelete = window.confirm("Concorda em remover o serviço do carrinho??")
+		if (toDelete){
+		  const novoCart = this.state.cart.filter((cartItem) => {
+			return cartItem.id !== id
+		  })
+		  this.setState({cart: novoCart})
+		}
 	}
 	
 	LimparCart = () => {
@@ -77,7 +75,7 @@ class App extends React.Component {
 						<Search
 							goToList={this.goToList}
 						/>
-						<Home changePage={this.changePage} />
+						{/* <Home changePage={this.changePage} /> */}
 					</div>
 
 			case "list":
@@ -102,7 +100,7 @@ class App extends React.Component {
 						<Search
 							goToList={this.goToList}
 						/>
-						<Home changePage={this.changePage} />
+						{/* <Home changePage={this.changePage} /> */}
 					</div>
 		}
 	}

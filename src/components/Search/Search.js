@@ -76,35 +76,48 @@ class Search extends React.Component {
     }
 
     render () {
-        const jobComponents = this.state.filterList.map((job) => {
-            return <Card key={job.id} job={job} goToDetailPage={this.props.goToDetailPage} addCart={this.props.addCart}/>
-        })
+        const jobComponents = this.state.filterList.map((job, index) => {
+            if (index < 3) {
+                return <Card key={job.id} job={job} goToDetailPage={this.props.goToDetailPage} addCart={this.props.addCart}/> 
+            }
+        });
 
         return (
             <MainSearch>
-                <div className="div-search">
-                    <div className="search-box">
-                        <div>
-                            <h1 className="text-bold">Conectando quem precisa com quem sabe fazer</h1>
-                        </div>
-                        <div>
-                            <p className="text-middle">Escolha o melhor produto para você.</p>
-                        </div>
-                        <div className="search">
+                <div className="main">
+                    <div className="div-search">
+                        <div className="search-box">
                             <div>
-                                <img id="img-search" src={search}/>
+                                <h1 className="text-bold">Conectando quem precisa com quem sabe fazer</h1>
                             </div>
-                            <div className="input">
-                                <input value={this.state.pesquisa} onChange={this.handlePesquisa} placeholder="O que está buscando?"/>
+                            <div>
+                                <p className="text-middle">Escolha o melhor produto para você.</p>
                             </div>
-                            <div className="div-button">
-                                <button className="buttonSearch" onClick={() => this.props.goToList()} value={this.state.pesquisa} onChange={this.handlePesquisa}>Buscar</button>
+                            <div className="search">
+                                <div>
+                                    <img id="img-search" src={search}/>
+                                </div>
+                                <div className="input">
+                                    <input value={this.state.pesquisa} onChange={this.handlePesquisa} placeholder="O que está buscando?"/>
+                                </div>
+                                <div className="div-button">
+                                    <button className="buttonSearch" onClick={() => this.props.goToList()} value={this.state.pesquisa} onChange={this.handlePesquisa}>Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="div-imagem">
+                            <div className="div-contain">
+                                <img id="engenheiro" src={eng}/>
                             </div>
                         </div>
                     </div>
-                    <div className="div-imagem">
-                        <div className="div-contain">
-                            <img id="engenheiro" src={eng}/>
+                    <div className="div-cards">
+                        <div>
+                            <button onClick={() => this.props.changePage("list")}>Contratar um labeninja</button>
+                        </div>
+                        <hr/>
+                        <div className="cards">
+                            {jobComponents}
                         </div>
                     </div>
                 </div>
