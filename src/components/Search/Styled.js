@@ -56,7 +56,7 @@ export const MainSearch = styled.div `
                     width: 18%;
                     height: 100%;
 
-                    .button{
+                    .buttonSearch{
                         border: none;
                         border-radius: 10px;
                         height: 80%;
@@ -96,9 +96,5 @@ export const MainSearch = styled.div `
                 height: 90%;
             }
         }
-    }
-
-    .search-box {
-
     }
 `

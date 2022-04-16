@@ -28,19 +28,19 @@ export default class ListPage extends React.Component {
         MaiorValor: "",
         Pesquisa: "",
         Ord: "",
-    }
+    };
 
     componentDidMount() {
-        this.getJobs()
-        this.filterJobs()
-    }
+        this.getJobs();
+        this.filterJobs();
+    };
 
     componentDidUpdate(prevProps, prevState){
         if(
             this.state.MenorValor !== prevState.MenorValor ||
             this.state.MaiorValor !== prevState.MaiorValor ||
             this.state.Pesquisa !== prevState.Pesquisa ||
-            this.state.Ord !== prevState.Ord
+            this.state.Ord !== prevState.Ord 
         ) {
             this.filterJobs()
         }

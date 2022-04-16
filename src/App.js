@@ -2,15 +2,15 @@ import React from 'react';
 import CreateJob from './components/CreateJob/CreateJob';
 import Footer from './components/Footer/Footer';
 
-import Home from './components/Home' //
-import ListPage from './components/ListPage'
-import { createGlobalStyle } from "styled-components"
-import DetailPage from './components/DetailPage'
-import Cart from './components/Cart'
-import C from './components/C/C' //
+import Home from './components/Home'; 
+import ListPage from './components/ListPage';
+import { createGlobalStyle } from "styled-components";
+import DetailPage from './components/DetailPage';
+import Cart from './components/Cart';
+import C from './components/C/C';
 import Search from './components/Search/Search';
 
-const Global = createGlobalStyle` //
+const Global = createGlobalStyle` 
   body {
     margin: 0;
     padding: 0;
@@ -29,56 +29,83 @@ const Global = createGlobalStyle` //
 
 class App extends React.Component {
 	state = {
-		currentPage: "",
+		currentPage: "form",
 		DetailId: "", 
-    	cart: [] 
+    	cart: [],
+		pesquisa: [] 
 	};
 	
 	changePage = (pageName) => {
 		this.setState({ currentPage: pageName })
-	  }
+	}
 	
-	  goToDetailPage = (jobId) => {
-		this.setState({currentPage: "detalhe", DetailId: jobId})
-	  }
+	goToDetailPage = (jobId) => {
+	this.setState({ currentPage: "detalhe", DetailId: jobId})
+	}
 	
-	  addCart = (job) => {
-		const novoCart = [...this.state.cart, job]
+	goToList = (search) => {
+		this.setState({ currentPage: "list", pesquisa: search});
+	}
+
+	addCart = (job) => {
+	const novoCart = [...this.state.cart, job]
+	this.setState({cart: novoCart})
+	localStorage.setItem("Cart", JSON.stringify(novoCart))
+	alert(`Serviço ${job.title} adicionado ao carrinho`)
+	}
+	
+	removerCart = (id) => {
+	const toDelete = window.confirm("Concorda em remover o serviço do carrinho??")
+	if (toDelete){
+		const novoCart = this.state.cart.filter((cartItem) => {
+		return cartItem.id !== id
+		})
 		this.setState({cart: novoCart})
-		alert(`Serviço ${job.title} adicionado ao carrinho`)
-	  }
+		localStorage.setItem("Cart", JSON.stringify(novoCart))
+	}
+	}
 	
-	  removerCart = (id) => {
-		const toDelete = window.confirm("Concorda em remover o serviço do carrinho??")
-		if (toDelete){
-		  	const novoCart = this.state.cart.filter((cartItem) => {
-			return cartItem.id !== id
-		  })
-		  this.setState({cart: novoCart})
-		}
-	  }
+	LimparCart = () => {
+	this.setState({cart: []})
+	alert("Obrigada!")
+	}
 	
-	  LimparCart = () => {
-		this.setState({cart: []})
-		alert("Obrigada!")
-	  }
-	
-	  ToPage = () => {
+	ToPage = () => {
 		switch (this.state.currentPage) {
-		  case "home":
-			return <Home changePage={this.changePage} />
-		  case "list":
-			return <ListPage addCart={this.addCart} goToDetailPage={this.goToDetailPage}/>
-		  case "form":
+			case "home":
+			return 	<div>
+						<Search
+							goToList={this.goToList}
+						/>
+						<Home changePage={this.changePage} />
+					</div>
+
+			case "list":
+			return (
+				<div>
+					<ListPage 
+						addCart={this.addCart} 
+						goToDetailPage={this.goToDetailPage}
+						search={this.state.pesquisa}
+					/>
+				</div>
+			)
+
+			case "form":
 			return <CreateJob />
-		  case "cart":
+			case "cart":
 			return <Cart changePage={this.changePage} cart={this.state.cart} removerCart={this.removerCart} LimparCart={this.LimparCart}/>
-		  case "detail":
+			case "detail":
 			return <DetailPage jobId={this.state.DetailId} changePage={this.changePage}/>
-		  default:
-			return <Home changePage={this.changePage} />
+			default:
+			return 	<div>
+						<Search
+							goToList={this.goToList}
+						/>
+						<Home changePage={this.changePage} />
+					</div>
 		}
-	  }
+	}
 
 	render () {
 		return	(
@@ -87,7 +114,6 @@ class App extends React.Component {
 				<C 
 					changePage={this.changePage} 
 				/>
-				<Search/>
 				{this.ToPage()}
 				<Footer 
 					changePage={this.changePage}
