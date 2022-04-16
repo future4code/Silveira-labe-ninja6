@@ -1,24 +1,8 @@
-import React from "react"
-import axios from "axios"
-import styled from "styled-components"
-import { URL, headers } from './Api/Api.js'
-import Card from "./Card.js"
-
-const ListContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin: 16px;
-`
-
-const Filters = styled.div`
-    border: 3px black;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 30px 26px 0 26px;
-`
-
-
+import React from "react";
+import axios from "axios";
+import { URL, headers } from '../Api/Api.js';
+import Card from "../Card/Card.js";
+import { ListContainer, Filters, Master } from "./Styled.js";
 
 export default class ListPage extends React.Component {
     state = {
@@ -102,28 +86,36 @@ export default class ListPage extends React.Component {
 
     render() {
         const jobComponents = this.state.filterList.map((job) => {
-            return <Card key={job.id} job={job} goToDetailPage={this.props.goToDetailPage} addCart={this.props.addCart}/>
+            return (
+                <div>
+                    <Card key={job.id} job={job} goToDetailPage={this.props.goToDetailPage} addCart={this.props.addCart}/>
+                </div>
+            )
         })
 
         return (
-            <div>
+            <Master>
                 <Filters>
-                    <input value={this.state.MenorValor} onChange={this.handleMenorValor} placeholder="Valor Mínimo"/>
-                    <input value={this.state.MaiorValor} onChange={this.handleMaiorValor} placeholder="Valor Máximo"/>
-                    <input value={this.state.Pesquisa} onChange={this.handlePesquisa} placeholder="Busca por Nome"/>
-                    <select value={this.state.Ord} onChange={this.handleOrd}>
-                        <option>Não Ordenado</option>
-                        <option>Menor Valor</option>
-                        <option>Maior Valor</option>
-                        <option>Nome</option>
-                        <option>Prazo</option>
-                    </select>
+                    <div className="div-control">
+                        <input value={this.state.MenorValor} onChange={this.handleMenorValor} placeholder="Valor Mínimo"/>
+                        <input value={this.state.MaiorValor} onChange={this.handleMaiorValor} placeholder="Valor Máximo"/>
+                        <input value={this.state.Pesquisa} onChange={this.handlePesquisa} placeholder="Busca por Nome"/>
+                        <select value={this.state.Ord} onChange={this.handleOrd}>
+                            <option>Não Ordenado</option>
+                            <option>Menor Valor</option>
+                            <option>Maior Valor</option>
+                            <option>Nome</option>
+                            <option>Prazo</option>
+                        </select>
+                    </div>
                 </Filters>
-
+                <hr/>
                 <ListContainer>
-                    {jobComponents}
+                    <div className="div-jobs">
+                        {jobComponents}
+                    </div>
                 </ListContainer>
-            </div>
+            </Master>
         )
     }
 }

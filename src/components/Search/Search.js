@@ -4,7 +4,7 @@ import search from "../../img/search.png";
 import eng from "../../img/engenheiro.png";
 import axios from "axios";
 import { URL, headers } from "../Api/Api";
-import Card from "../Card";
+import Card from "../Card/Card";
 
 class Search extends React.Component {
 

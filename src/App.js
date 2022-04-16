@@ -3,10 +3,10 @@ import CreateJob from './components/CreateJob/CreateJob';
 import Footer from './components/Footer/Footer';
 
 import Home from './components/Home'; 
-import ListPage from './components/ListPage';
+import ListPage from './components/ListPage/ListPage';
 import { createGlobalStyle } from "styled-components";
 import DetailPage from './components/DetailPage';
-import Cart from './components/Cart';
+import Cart from './components/Cart/Cart';
 import C from './components/C/C';
 import Search from './components/Search/Search';
 
@@ -29,7 +29,7 @@ const Global = createGlobalStyle`
 
 class App extends React.Component {
 	state = {
-		currentPage: "form",
+		currentPage: "cart",
 		DetailId: "", 
     	cart: [],
 		pesquisa: [] 

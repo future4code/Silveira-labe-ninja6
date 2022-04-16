@@ -90,7 +90,7 @@ export const Button_enviar = styled.button`
     width: 106%;
     height: 50px;
     color: white;
-    background-color: #2AC6FF;
+    background-color: #2790b0;
     border: 0;
     border-radius: 50px;
     cursor: pointer;
@@ -101,10 +101,4 @@ export const Button_enviar = styled.button`
     text-align: center;
     text-transform: uppercase;
     transition: border-color .2s ease-in,box-shadow .2s ease-in,background-color .2s ease-in,color .3s ease;
-/* color: black;
-background-color: whitesmoke;
-&:hover{
-    color: red;
-    background-color: aqua;
-} */
 `
