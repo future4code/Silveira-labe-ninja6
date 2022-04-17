@@ -26,7 +26,7 @@ Nosso objetivo era excercer o trabalho em grupo e solidificar os conhecimentos a
 
 ## 📲 Website
 
-Link para visualização no surge: [polite-boat.surge.sh](surge)
+Link para visualização no surge: [cooing-cause.surge.sh](surge)
 
 ## 🚀 Como executar
 
