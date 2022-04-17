@@ -36,7 +36,7 @@ $ git clone https://github.com/future4code/Silveira-labe-ninja6.git
 ```
 Acessar o repertório:
 ```bash
-$ cd polite-boat.surge.sh
+$ cd cooing-cause.surge.sh
 
 ```
 ****
