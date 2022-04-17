@@ -80,7 +80,7 @@ export default class CreatePage extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+
         return (
             <CreateContainer>
                 <h1>Cadastrar o seu serviço</h1>
@@ -94,10 +94,12 @@ export default class CreatePage extends React.Component {
                     <option>Cartão de Crédito</option>
                     <option>PayPal</option>
                     <option>Boleto</option>
+r
                 </select>
                 <input value={this.state.dueDate} onChange={this.handleDueDate} placeholder="Prazo do Serviço" type="date" />
                 <Button1 onClick={this.createJob}>Cadastrar Serviço</Button1>
             </CreateContainer>
         )
     }
+
 }

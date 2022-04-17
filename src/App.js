@@ -25,7 +25,7 @@ const Global = createGlobalStyle`
   }
 `
 
-class App extends React.Component {
+export default class App extends React.Component {
 	state = {
 		currentPage: "",
 		DetailId: "", 
@@ -136,4 +136,3 @@ class App extends React.Component {
 	};
 };
 
-export default App
