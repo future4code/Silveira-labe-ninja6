@@ -30,19 +30,27 @@ class App extends React.Component {
 		currentPage: "",
 		DetailId: "", 
     	cart: [],
-		pesquisa: [] 
+		pesquisa: [],
+		confirma: false
 	};
 	
 	changePage = (pageName) => {
-		this.setState({ currentPage: pageName })
+		this.setState({ currentPage: pageName, confirma: false})
 	}
 	
 	goToDetailPage = (jobId) => {
-	this.setState({ currentPage: "detalhe", DetailId: jobId})
+	this.setState({ currentPage: "detalhe", DetailId: jobId, confirma: false})
 	}
-	
+
 	goToList = (search) => {
 		this.setState({ currentPage: "list", pesquisa: search});
+		if(search.length > 0){
+			this.setState({ confirma: true })
+			console.log("entrei no state")
+		}
+		else {
+			this.setState({ confirma: false })
+		}
 	}
 
 	addCart = (job) => {
@@ -85,6 +93,7 @@ class App extends React.Component {
 						addCart={this.addCart} 
 						goToDetailPage={this.goToDetailPage}
 						search={this.state.pesquisa}
+						confirma={this.state.confirma}
 					/>
 				</div>
 			)
@@ -97,7 +106,7 @@ class App extends React.Component {
 			return <DetailPage 
 						jobId={this.state.DetailId} 
 						changePage={this.changePage}
-						addCart={this.addCart} 
+						addCart={this.addCart}
 					/>
 			default:
 			return 	<div>

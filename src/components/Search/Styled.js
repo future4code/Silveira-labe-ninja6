@@ -151,6 +151,7 @@ export const MainSearch = styled.div `
         hr {
             width: 70%;
             height: 1px;
+            margin-bottom: 5%;
         }
 
         .cards {

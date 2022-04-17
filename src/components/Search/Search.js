@@ -50,7 +50,7 @@ class Search extends React.Component {
     filterJobs = () => {
         const maximo = this.state.MaiorValor ? Number(this.state.MaiorValor) : Infinity
         const minimo = this.state.MenorValor ? Number(this.state.MenorValor) : -Infinity
-
+        
         const novoJobsList = this.state.jobsList
             .filter((job) => job.price >= minimo)
             .filter((job) => job.price <= maximo)
@@ -72,11 +72,16 @@ class Search extends React.Component {
                 }
             })
 
-        this.setState({filterList: novoJobsList})
+        this.setState({filterList: novoJobsList});
+        localStorage.setItem("filterList", JSON.stringify(this.state.filterList));
     }
 
     render () {
-        const jobComponents = this.state.filterList.map((job, index) => {
+        const jobComponents = this.state.filterList.map((job) => {
+            return <Card key={job.id} job={job} goToDetailPage={this.props.goToDetailPage} addCart={this.props.addCart}/> 
+        });
+
+        const list = this.state.jobsList.map((job, index) => {
             if (index < 3) {
                 return <Card key={job.id} job={job} goToDetailPage={this.props.goToDetailPage} addCart={this.props.addCart}/> 
             }
@@ -101,7 +106,7 @@ class Search extends React.Component {
                                     <input value={this.state.pesquisa} onChange={this.handlePesquisa} placeholder="O que está buscando?"/>
                                 </div>
                                 <div className="div-button">
-                                    <button className="buttonSearch" onClick={() => this.props.goToList()} value={this.state.pesquisa} onChange={this.handlePesquisa}>Buscar</button>
+                                    <button className="buttonSearch" onClick={() => this.props.goToList(this.state.pesquisa)}>Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +126,7 @@ class Search extends React.Component {
                         </div>
                         <hr/>
                         <div className="cards">
-                            {jobComponents}
+                            {list}
                         </div>
                     </div>
                 </div>

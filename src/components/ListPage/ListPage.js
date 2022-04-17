@@ -12,9 +12,11 @@ export default class ListPage extends React.Component {
         MaiorValor: "",
         Pesquisa: "",
         Ord: "",
+        confirma: false
     };
 
     componentDidMount() {
+        this.setState({confirma: this.props.confirma});
         this.getJobs();
         this.filterJobs();
     };
@@ -39,7 +41,13 @@ export default class ListPage extends React.Component {
     }
 
     handlePesquisa = (event) => {
+        if(this.state.confirma){
+            this.setState({Pesquisa: this.props.search})
+            
+        }
+        else{
         this.setState({Pesquisa: event.target.value})
+        }
     }
 
     handleOrd = (event) => {
@@ -49,17 +57,23 @@ export default class ListPage extends React.Component {
     getJobs = () => {
         axios.get(`${URL}/jobs`, headers)
             .then((response) => {
-                this.setState({ jobsList: response.data.jobs, filterList: response.data.jobs })
+                if(this.state.confirma === false){
+                    this.setState({ jobsList: response.data.jobs, filterList: response.data.jobs })
+                }
+                else{
+                    const newList = localStorage.getItem("filterList")
+                    this.setState({jobsList: JSON.parse(newList), filterList: JSON.parse(newList)})
+                }
             })
             .catch((error) => {
                 alert(error.response.data.message)
             })
     }
-
+    
     filterJobs = () => {
         const maximo = this.state.MaiorValor ? Number(this.state.MaiorValor) : Infinity
         const minimo = this.state.MenorValor ? Number(this.state.MenorValor) : -Infinity
-
+        
         const novoJobsList = this.state.jobsList
             .filter((job) => job.price >= minimo)
             .filter((job) => job.price <= maximo)
@@ -80,11 +94,11 @@ export default class ListPage extends React.Component {
                         return a.dueDate.localeCompare(b.dueDate)
                 }
             })
-
-        this.setState({filterList: novoJobsList})
+        this.setState({filterList: novoJobsList});
     }
 
     render() {
+
         const jobComponents = this.state.filterList.map((job) => {
             return (
                 <div>
