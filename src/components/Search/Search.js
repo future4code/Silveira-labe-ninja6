@@ -119,7 +119,7 @@ class Search extends React.Component {
                     <div className="div-cards">
                         <div className="text-servicos">
                             <h2>Os serviços mais pedidos</h2>
-                            <p>Os produtos mais realizados</p>
+                            <p>Produtos com a maior qualidade</p>
                         </div>
                         <div className="div-button-text">
                             <button className="button-list" onClick={() => this.props.changePage("list")}>Contratar um labeninja</button>
