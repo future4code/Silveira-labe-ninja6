@@ -1,5 +1,3 @@
-
-
 export const Data = (date) => {
     const day = date.substring(8, 10)
     const month = date.substring(5, 7)

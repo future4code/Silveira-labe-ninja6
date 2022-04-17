@@ -1,6 +1,6 @@
 import React from "react"
 import axios from "axios"
-import { URL, headers } from '../Api/Api'
+import { URL, headers } from './Api/Api'
 import styled from 'styled-components'
 
 
@@ -11,21 +11,15 @@ const CreateContainer = styled.div`
     
     color: blue;
     border: 5px black;
-
 `
 
 const Button1 = styled.button`
-
 color: black;
 background-color: whitesmoke;
-
 &:hover{
     color: red;
     background-color: aqua;
 }
-
-
-
 `
 
 
@@ -86,6 +80,7 @@ export default class CreatePage extends React.Component {
     }
 
     render() {
+
         return (
             <CreateContainer>
                 <h1>Cadastrar o seu serviço</h1>
@@ -99,12 +94,12 @@ export default class CreatePage extends React.Component {
                     <option>Cartão de Crédito</option>
                     <option>PayPal</option>
                     <option>Boleto</option>
-                    
+r
                 </select>
                 <input value={this.state.dueDate} onChange={this.handleDueDate} placeholder="Prazo do Serviço" type="date" />
                 <Button1 onClick={this.createJob}>Cadastrar Serviço</Button1>
             </CreateContainer>
         )
     }
-}
 
+}
