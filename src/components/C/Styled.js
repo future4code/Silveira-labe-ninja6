@@ -29,6 +29,7 @@ export const Cabeçalho = styled.header`
             background: none;
             border: none;
             color: #2b4e72;
+            transition: border-color .2s ease-in,box-shadow .2s ease-in,background-color .2s ease-in,color .3s ease;
             &:hover {
                 color: #2790b0;
                 cursor: pointer;
@@ -45,6 +46,7 @@ export const Cabeçalho = styled.header`
             border-radius: 10px;
             background: none;
             color: #2b4e72;
+            transition: border-color .2s ease-in,box-shadow .2s ease-in,background-color .2s ease-in,color .3s ease;
             &:hover {
                 cursor: pointer;
                 background-color: #2790b020;

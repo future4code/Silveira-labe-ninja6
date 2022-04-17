@@ -101,4 +101,10 @@ export const Button_enviar = styled.button`
     text-align: center;
     text-transform: uppercase;
     transition: border-color .2s ease-in,box-shadow .2s ease-in,background-color .2s ease-in,color .3s ease;
+    &:hover {
+        cursor: pointer;
+        background: #36a9cc;
+        -webkit-transition: 0.2s;
+        transition: 0.2s;       
+    }
 `

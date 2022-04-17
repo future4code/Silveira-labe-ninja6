@@ -1,11 +1,9 @@
 import React from 'react';
 import CreateJob from './components/CreateJob/CreateJob';
 import Footer from './components/Footer/Footer';
-
-import Home from './components/Home'; 
 import ListPage from './components/ListPage/ListPage';
 import { createGlobalStyle } from "styled-components";
-import DetailPage from './components/DetailPage';
+import DetailPage from './components/DetailPage/DetailPage';
 import Cart from './components/Cart/Cart';
 import C from './components/C/C';
 import Search from './components/Search/Search';
@@ -74,8 +72,10 @@ class App extends React.Component {
 			return 	<div>
 						<Search
 							goToList={this.goToList}
+							addCart={this.addCart} 
+							goToDetailPage={this.goToDetailPage}
+							changePage={this.changePage}
 						/>
-						{/* <Home changePage={this.changePage} /> */}
 					</div>
 
 			case "list":
@@ -93,14 +93,20 @@ class App extends React.Component {
 			return <CreateJob />
 			case "cart":
 			return <Cart changePage={this.changePage} cart={this.state.cart} removerCart={this.removerCart} LimparCart={this.LimparCart}/>
-			case "detail":
-			return <DetailPage jobId={this.state.DetailId} changePage={this.changePage}/>
+			case "detalhe":
+			return <DetailPage 
+						jobId={this.state.DetailId} 
+						changePage={this.changePage}
+						addCart={this.addCart} 
+					/>
 			default:
 			return 	<div>
 						<Search
 							goToList={this.goToList}
+							addCart={this.addCart} 
+							goToDetailPage={this.goToDetailPage}
+							changePage={this.changePage}
 						/>
-						{/* <Home changePage={this.changePage} /> */}
 					</div>
 		}
 	}

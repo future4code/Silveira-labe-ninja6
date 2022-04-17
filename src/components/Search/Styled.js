@@ -73,6 +73,7 @@ export const MainSearch = styled.div `
                         color: white;
                         font-size: 1.2rem;
                         font-weight: bold;
+                        transition: border-color .2s ease-in,box-shadow .2s ease-in,background-color .2s ease-in,color .3s ease;
                         &:hover {
                             cursor: pointer;
                             background: #36a9cc;
@@ -112,9 +113,42 @@ export const MainSearch = styled.div `
         align-items: center;
         width: 100%;
         min-height: 100vh;
+        margin-top: 5%;
+
+        .text-servicos {
+            text-align: center;
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .div-button-text {
+            margin: 2% 0;
+        }
+
+        .button-list {
+            width: 110%;
+            height: 50px;
+            color: white;
+            background-color: #2790b0;
+            border: 0;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: .3px;
+            line-height: 1;
+            text-align: center;
+            text-transform: uppercase;
+            transition: border-color .2s ease-in,box-shadow .2s ease-in,background-color .2s ease-in,color .3s ease;
+            &:hover {
+                background: #36a9cc;
+                -webkit-transition: 0.2s;
+                transition: 0.2s;       
+            }
+        }
 
         hr {
-            /* border: none; */
             width: 70%;
             height: 1px;
         }

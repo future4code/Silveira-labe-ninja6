@@ -24,6 +24,7 @@ export const CardContainer = styled.div`
         color: #2b4e72;
         font-weight: bold;
         cursor: pointer;
+        transition: border-color .2s ease-in,box-shadow .2s ease-in,background-color .2s ease-in,color .3s ease;
         &:hover {
             background: #2b4e7210;
         }
